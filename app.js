@@ -74,7 +74,7 @@ bname:['Business name','ව්‍යාපාරයේ නම'],bcat:['Category'
 bphone:['Phone number','දුරකථන අංකය'],bwa:['WhatsApp number','WhatsApp අංකය'],bfb:['Facebook link','Facebook සබැඳිය'],big:['Instagram link','Instagram සබැඳිය'],
 choose:['Choose…','තෝරන්න…'],save:['Save changes','වෙනස්කම් සුරකින්න'],saved:['Saved','සුරැකිණි'],
 addph:['Add photos','ඡායාරූප එක් කරන්න'],phcount:['{n} of 20 photos','ඡායාරූප {n} / 20'],phfull:['You can add up to 20 photos','උපරිම ඡායාරූප 20යි'],
-phtip:['The first photo is shown first on your profile.','පළමු ඡායාරූපය පැතිකඩේ මුලින්ම පෙනේ.'],
+phtip:['The first photo is shown first on your profile. Use the arrows to change the order.','පළමු ඡායාරූපය පැතිකඩේ මුලින්ම පෙනේ. අනුපිළිවෙල වෙනස් කරන්න ඊතල භාවිතා කරන්න.'],phfirst:['Make first','පළමු ඡායාරූපය කරන්න'],phleft:['Move left','වමට'],phright:['Move right','දකුණට'],phcover:['Cover','ප්‍රධාන'],prev:['Previous','කලින්'],next:['Next','ඊළඟ'],close:['Close','වසන්න'],
 m1:['1 month','මාස 1'],m6:['6 months','මාස 6'],m12:['12 months','මාස 12'],best:['Best value','වඩාත් ලාභදායී'],save_n:['Save Rs. {n}','රු. {n} ඉතිරියි'],
 manual:['Online card payment is coming soon. To activate this plan now, please contact us.','අන්තර්ජාල කාඩ් ගෙවීම ඉක්මනින්. මෙම සැලසුම දැන්ම සක්‍රිය කරගන්න අප අමතන්න.'],
 history:['Payment history','ගෙවීම් ඉතිහාසය'],nopay:['No payments yet','ගෙවීම් තවම නැත'],
@@ -120,7 +120,7 @@ const myV=()=>AUTH.user?S.vendors[AUTH.user.uid]:null;
 function nd(d){const x=d.data({serverTimestamps:'estimate'}),o={id:d.id};for(const k in x){const v=x[k];o[k]=(v&&typeof v.toDate==='function')?v.toDate().toISOString():v}return o}
 
 /* icons */
-const IC={home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',pin:'<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/>',mega:'<path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 9a4 4 0 0 1 0 6"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 15c2.5.7 4 2.3 4 5"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',photo:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/>',back:'<path d="M15 5l-7 7 7 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1z"/>',chat:'<path d="M4 20l1.3-4A8 8 0 1 1 8.2 18.8z"/>',fb:'<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z"/>',ig:'<rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17 7h.01"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'};
+const IC={home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',pin:'<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/>',mega:'<path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 9a4 4 0 0 1 0 6"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 15c2.5.7 4 2.3 4 5"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',photo:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/>',back:'<path d="M15 5l-7 7 7 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1z"/>',chat:'<path d="M4 20l1.3-4A8 8 0 1 1 8.2 18.8z"/>',fb:'<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z"/>',ig:'<rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17 7h.01"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',next:'<path d="M9 5l7 7-7 7"/>',star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'};
 const ic=(n,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 
 /* placeholder pictures (sample vendors / vendors without photos) */
@@ -232,10 +232,15 @@ function categoryView(){const c=catOf(route.cat),d=route.dist;
 function districtView(){const c=route.cat;
  return`<div class="sec" style="margin-top:6px"><h2>${esc(distN(route.dist))}</h2></div><div class="chips"><button class="chip ${!c?'on':''}" data-act="filt" data-k="cat" data-v="">${t('all')}</button>${CATS.map(x=>`<button class="chip ${c===x.id?'on':''}" data-act="filt" data-k="cat" data-v="${x.id}">${x.ic} ${esc(nm(x))}</button>`).join('')}</div>${vlist(vendorsFor({dist:route.dist,cat:c}))}`}
 
+let curPhotos=[];
+function galleryHtml(ps,v){curPhotos=ps;
+ if(!ps.length)return`<div class="gal"><div class="empty" style="aspect-ratio:4/3;display:grid;place-items:center">${t('nophoto')}</div></div>`;
+ const multi=ps.length>1;
+ return`<div class="gal"><div class="gal-track" data-gal>${ps.map((p,i)=>`<img src="${p}" alt="${esc(v.name)}" data-act="lbopen" data-i="${i}">`).join('')}</div><span class="gal-count" data-cnt>1/${ps.length}</span>${multi?`<button class="gal-nav prev" data-act="galprev" aria-label="${t('prev')}">${ic('back',22)}</button><button class="gal-nav next" data-act="galnext" aria-label="${t('next')}">${ic('next',22)}</button>`:''}</div>${multi?`<div class="gal-thumbs">${ps.map((p,i)=>`<button class="gal-th ${i?'':'on'}" data-act="galthumb" data-i="${i}" aria-label="${i+1}"><img src="${p}" alt=""></button>`).join('')}</div>`:''}`}
 function vendorView(){const v=getV(route.id);
  if(!v)return`<div class="empty">${t('novend')}</div>`;
  const c=catOf(v.cat),ps=v.seed?[0,1,2,3,4,5].map(i=>ph(v.n+i,c.ic)):(PC[v.id]?PC[v.id].map(p=>p.src):(v.cover?[v.cover]:[])),wa=digits(v.whatsapp||v.phone),tel=String(v.phone||'').replace(/[^\d+]/g,''),fb=safeUrl(v.facebook),ig=safeUrl(v.instagram);
- return`<div class="gal">${ps.length?`<div class="gal-track" data-gal>${ps.map(p=>`<img src="${p}" alt="${esc(v.name)}">`).join('')}</div><span class="gal-count" data-cnt>1/${ps.length}</span>`:`<div class="empty" style="aspect-ratio:4/3;display:grid;place-items:center">${t('nophoto')}</div>`}</div>
+ return`${galleryHtml(ps,v)}
  <h1 style="font-size:28px;margin:16px 0 8px;line-height:1.2">${esc(v.name)}</h1>
  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag">${c.ic} ${esc(nm(c))}</span><span class="tag ghost">${esc(distN(v.dist))}</span></div>
  <div class="contact">${wa?`<a class="cbtn wa" href="https://wa.me/${wa}" target="_blank" rel="noopener">${ic('chat',26)}${t('wa')}</a>`:'<span></span>'}${tel?`<a class="cbtn tel" href="tel:${tel}">${ic('phone',26)}${t('call')}</a>`:'<span></span>'}${fb?`<a class="cbtn fb" href="${esc(fb)}" target="_blank" rel="noopener">${ic('fb',26)}${t('fb')}</a>`:'<span></span>'}</div>
@@ -264,7 +269,7 @@ function vprofileView(){const v=myV();if(!v)return loadingView();return`<div cla
 
 function vphotosView(){const ps=PC[AUTH.user.uid];if(!ps)return loadingView();return`<div class="sec" style="margin-top:6px"><h2>${t('myph')}</h2><span class="muted">${t('phcount',{n:ps.length})}</span></div><p class="hint" style="margin-top:0">${t('phtip')}</p>
  <label class="btn btn-primary btn-block" style="margin:10px 0 16px">${ic('photo',20)} ${t('addph')}<input type="file" accept="image/*" multiple hidden data-file="photos"></label>
- <div class="ph-grid">${ps.map((p,i)=>`<div class="pi"><img src="${p.src}" alt=""><button data-act="delph" data-i="${i}" aria-label="${t('del')}">${ic('x',16)}</button></div>`).join('')}</div>`}
+ <div class="ph-grid">${ps.map((p,i)=>`<div class="pi"><img src="${p.src}" alt="">${i===0?`<span class="cvr">${t('phcover')}</span>`:''}<button class="del" data-act="delph" data-i="${i}" aria-label="${t('del')}">${ic('x',16)}</button><div class="mv">${i>0?`<button data-act="phmove" data-i="${i}" data-j="${i-1}" aria-label="${t('phleft')}">${ic('back',16)}</button><button data-act="phmove" data-i="${i}" data-j="0" aria-label="${t('phfirst')}">${ic('star',16)}</button>`:'<span></span><span></span>'}${i<ps.length-1?`<button data-act="phmove" data-i="${i}" data-j="${i+1}" aria-label="${t('phright')}">${ic('next',16)}</button>`:'<span></span>'}</div></div>`).join('')}</div>`}
 
 function vplanView(){const v=myV();if(!v)return loadingView();const pays=S.payments.filter(p=>p.uid===AUTH.user.uid).slice().sort(byNew('at'));
  return`<div class="sec" style="margin-top:6px"><h2>${t('plans')}</h2></div>${subCard(v)}<div class="plans" style="margin-top:20px">${PLANS.map(p=>{const sv=p.months*1000-p.price;return`<button class="plan ${p.id==='m12'?'best':''}" data-act="pay" data-id="${p.id}">${p.id==='m12'?`<span class="badge">${t('best')}</span>`:''}<span><b>${t(p.id)}</b><small>${sv>0?t('save_n',{n:sv.toLocaleString('en-US')}):'&nbsp;'}</small></span><span class="pr">${rs(p.price)}</span></button>`}).join('')}</div>
@@ -310,7 +315,7 @@ function hooks(){
  document.querySelectorAll('[data-banner]').forEach(b=>{const tr=b.querySelector('.bn-track'),dots=[...b.querySelectorAll('.dots i')];if(!dots.length)return;
   tr.addEventListener('scroll',()=>{const i=Math.round(tr.scrollLeft/tr.clientWidth);dots.forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
   if(!rm)timers.push(setInterval(()=>{const i=(Math.round(tr.scrollLeft/tr.clientWidth)+1)%dots.length;tr.scrollTo({left:i*tr.clientWidth,behavior:'smooth'})},4500))});
- const g=$('[data-gal]');if(g){const c=$('[data-cnt]'),n=g.children.length;g.addEventListener('scroll',()=>{c.textContent=(Math.round(g.scrollLeft/g.clientWidth)+1)+'/'+n},{passive:true})}
+ const g=$('[data-gal]');if(g){const c=$('[data-cnt]'),n=g.children.length;g.addEventListener('scroll',()=>{const i=Math.round(g.scrollLeft/g.clientWidth);c.textContent=(i+1)+'/'+n;document.querySelectorAll('.gal-th').forEach((b,k)=>b.classList.toggle('on',k===i))},{passive:true})}
  document.querySelectorAll('.chips').forEach(c=>{const o=c.querySelector('.chip.on');if(o)c.scrollLeft=o.offsetLeft-c.clientWidth/2+o.clientWidth/2})}
 function expiredModal(){modal(`<h2>${t('subexp')}</h2><p style="margin:0">${t('subexps')}</p><button class="btn btn-primary btn-block" data-act="closepay">${t('paynow')}</button><button class="btn btn-ghost btn-block" data-act="closemodal">${t('later')}</button>`)}
 
@@ -354,6 +359,17 @@ async function adminActivate(uid,planId){const p=PLANS.find(x=>x.id===planId),v=
   await updateDoc(doc(db,'vendors',uid),{paidUntil:Timestamp.fromDate(base)});
   await addDoc(collection(db,'payments'),{uid,name:v.name||'',months:p.months,amount:p.price,method:'manual',at:serverTimestamp()});toast(t('activated'))}
  catch(e){console.error(e);toast(t('e_generic'))}busy(false)}
+let LB=null;
+function lbDraw(){let el=$('#lb');if(!LB){if(el)el.remove();return}
+ if(!el){el=document.createElement('div');el.id='lb';document.body.appendChild(el);let x0=0;el.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)lbStep(dx<0?1:-1)},{passive:true})}
+ const n=curPhotos.length;
+ el.innerHTML=`<button class="lb-x" data-act="lbclose" aria-label="${t('close')}">${ic('x',26)}</button><img src="${curPhotos[LB.i]}" alt="">${n>1?`<button class="lb-n prev" data-act="lbprev" aria-label="${t('prev')}">${ic('back',28)}</button><button class="lb-n next" data-act="lbnext" aria-label="${t('next')}">${ic('next',28)}</button>`:''}<span class="lb-c">${LB.i+1}/${n}</span>`}
+function lbStep(d){if(!LB)return;const n=curPhotos.length;LB.i=(LB.i+d+n)%n;lbDraw()}
+function galGo(d){const g=$('[data-gal]');if(!g)return;const n=g.children.length,i=Math.max(0,Math.min(n-1,Math.round(g.scrollLeft/g.clientWidth)+d));g.scrollTo({left:i*g.clientWidth,behavior:'smooth'})}
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||''))return;if(e.key==='Escape'&&LB){LB=null;lbDraw();return}const d=e.key==='ArrowLeft'?-1:e.key==='ArrowRight'?1:0;if(!d)return;if(LB)lbStep(d);else galGo(d)});
+async function movePhoto(i,j){const uid=AUTH.user.uid,l=PC[uid];if(!l||i===j||!l[i]||!l[j])return;busy(true);
+ try{const [p]=l.splice(i,1);l.splice(j,0,p);await Promise.all(l.map((q,k)=>updateDoc(doc(db,'vendors',uid,'photos',q.id),{at:1e12+k})));await syncCover(uid)}
+ catch(e){console.error(e);toast(t('e_generic'));delete PC[uid];ensurePhotos(uid)}busy(false);render()}
 const ACT={
  go:d=>go(d.to,{id:d.id,cat:d.cat,dist:d.dist}),
  tab:d=>go(d.to),back:()=>back(),
@@ -363,6 +379,10 @@ const ACT={
  closemodal:()=>modal(''),closepay:()=>{modal('');go('vplan')},
  logout:async()=>{busy(true);try{await signOut(auth)}catch(e){}stopListeners();AUTH.user=null;AUTH.role=null;AUTH.profile=null;AUTH.ready=true;busy(false);noticed=false;stack=[];route={n:'auth'};render()},
  delph:d=>delPhoto(Number(d.i)),
+ phmove:d=>movePhoto(Number(d.i),Number(d.j)),
+ galprev:()=>galGo(-1),galnext:()=>galGo(1),
+ galthumb:d=>{const g=$('[data-gal]');if(g)g.scrollTo({left:Number(d.i)*g.clientWidth,behavior:'smooth'})},
+ lbopen:d=>{if(curPhotos.length){LB={i:Number(d.i)};lbDraw()}},lbclose:()=>{LB=null;lbDraw()},lbprev:()=>lbStep(-1),lbnext:()=>lbStep(1),
  reset:async()=>{const em=((draft.email)||($('#f_email')&&$('#f_email').value)||'').trim();if(!/^\S+@\S+\.\S+$/.test(em)){const b=$('#err');if(b)b.textContent=t('e_email');return}try{await sendPasswordResetEmail(auth,em);toast(t('reset_sent'))}catch(e){const b=$('#err');if(b)b.textContent=authErr(e)}},
  pay:d=>{const p=PLANS.find(x=>x.id===d.id);
   /* When PayHere is ready: if(PAYHERE.enabled) return startPayHere(p); */
