@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "Kasaade.lk – Sri Lanka’s Wedding Hub",
+  "short_name": "Kasaade.lk",
+  "description": "Find wedding photographers, venues, catering and more across all 25 districts of Sri Lanka.",
+  "lang": "si",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFBF9",
+  "theme_color": "#FFFBF9",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
