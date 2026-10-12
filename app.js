@@ -95,6 +95,8 @@ e_email:['Enter a valid email','නිවැරදි ඊමේල් ලිප�
 e_exist:['This email is already registered. Sign in instead.','මෙම ඊමේල් දැනටමත් ලියාපදිංචියි. පිවිසෙන්න.'],e_login:['Email or password is incorrect','ඊමේල් හෝ මුරපදය වැරදියි'],
 e_net:['No internet connection. Please try again.','අන්තර්ජාල සම්බන්ධතාවක් නැත. නැවත උත්සාහ කරන්න.'],e_many:['Too many attempts. Please wait a few minutes.','උත්සාහ ගණන වැඩියි. විනාඩි කිහිපයකින් නැවත උත්සාහ කරන්න.'],
 e_generic:['Something went wrong. Please try again.','යම් දෝෂයක් සිදු විය. නැවත උත්සාහ කරන්න.'],
+privacy:['Privacy Policy','රහස්‍යතා ප්‍රතිපත්තිය'],terms:['Terms of Service','සේවා කොන්දේසි'],agree:['By creating an account you agree to our {t} and {p}.','ගිණුමක් සාදන්නේ නම්, ඔබ අපගේ {t} සහ {p} පිළිගන්නවා.'],
+inst_t:['Install the app','ඇප් එක ස්ථාපනය කරන්න'],inst_d:['Add Kasaade.lk to your home screen. iPhone: tap Share, then “Add to Home Screen”. Android: browser menu ⋮, then “Install app”.','Kasaade.lk ඔබේ ෆෝන් එකේ home screen එකට එක් කරන්න. iPhone: Share බටන් එක, ඉන්පසු “Add to Home Screen”. Android: browser menu ⋮, ඉන්පසු “Install app”.'],inst_b:['Install','ස්ථාපනය කරන්න'],
 e_req:['Please fill the required fields','අවශ්‍ය ක්ෂේත්‍ර පුරවන්න'],
 del:['Remove','ඉවත් කරන්න'],profinc:['Complete your profile so customers can find you.','ගනුදෙනුකරුවන්ට ඔබව සොයාගත හැකි වන්නට පැතිකඩ සම්පූර්ණ කරන්න.'],
 sample:['Sample listing for preview','පෙරදසුන සඳහා නියැදි සේවා සපයන්නෙක්'],loading:['Loading…','පූරණය වෙමින්…'],
@@ -195,6 +197,7 @@ function authView(){const m=route.mode||'signin',role=route.role||'customer';
  <form class="form" data-form="${m}">
  ${m==='signup'?`<div class="roles"><button type="button" class="role ${role==='customer'?'on':''}" data-act="role" data-r="customer"><b>${t('customer')}</b><span>${t('cust_d')}</span></button><button type="button" class="role ${role==='vendor'?'on':''}" data-act="role" data-r="vendor"><b>${t('vendor')}</b><span>${t('vend_d')}</span></button></div>${fld('name',t('yourname'),{ac:'name'})}`:''}
  ${fld('email',t('email'),{type:'email',ac:'email',mode:'email'})}${fld('password',t('password'),{type:'password',ac:m==='signup'?'new-password':'current-password'})}
+ ${m==='signup'?`<p class="hint" style="margin:0">${t('agree',{t:`<a href="terms.html" ${LK}>${t('terms')}</a>`,p:`<a href="privacy.html" ${LK}>${t('privacy')}</a>`})}</p>`:''}
  <div class="err" id="err" role="alert"></div>
  <button class="btn btn-primary btn-block">${m==='signup'?t('signup'):t('signin')}</button></form>
  ${m==='signin'?`<div style="text-align:center"><button class="link" data-act="reset">${t('forgot')}</button></div>`:''}</div>`}
@@ -249,7 +252,14 @@ function vendorView(){const v=getV(route.id);
 
 function accountView(){return`<div class="sec" style="margin-top:6px"><h2>${t('n_acc')}</h2></div><div class="kpi"><span>${t('accinfo')}</span><b style="font-size:22px;word-break:break-all">${esc(AUTH.user.email)}</b><span>${esc((AUTH.profile&&AUTH.profile.name)||'')}</span></div><div style="margin-top:16px"><button class="btn btn-ghost btn-block" data-act="logout">${t('signout')}</button></div>`}
 
-function aboutView(){return`<div class="about"><img src="${LOGO}" alt="Kasaade.lk" style="width:70%;max-width:280px"><p style="margin:0">${t('aboutt')}</p><div class="co"><span class="muted" style="font-size:13px">${t('built')}</span><h3 style="font-size:26px;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent">${COMPANY.name}</h3><div class="acts"><a class="btn btn-primary" href="tel:${COMPANY.phone}">${ic('phone',20)} ${COMPANY.phone}</a><a class="btn btn-ghost" href="https://wa.me/${digits(COMPANY.phone)}" target="_blank" rel="noopener">${ic('chat',20)} WhatsApp</a><a class="btn btn-ghost" href="mailto:${COMPANY.email}">${ic('mail',20)} ${COMPANY.email}</a></div></div><p class="hint">© 2026 ${COMPANY.name}</p></div>`}
+let deferredInstall=null;
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const LK='style="color:var(--rose-d);text-decoration:underline" target="_blank" rel="noopener"';
+const legalLinks=()=>`<a href="privacy.html" ${LK}>${t('privacy')}</a> · <a href="terms.html" ${LK}>${t('terms')}</a>`;
+const installCard=()=>`<div class="co"><h3>${t('inst_t')}</h3><p class="hint" style="margin:6px 0 0">${t('inst_d')}</p>${deferredInstall?`<div class="acts"><button class="btn btn-primary" data-act="install">${ic('home',20)} ${t('inst_b')}</button></div>`:''}</div>`;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;if(route.n==='about')render()});
+window.addEventListener('appinstalled',()=>{deferredInstall=null;if(route.n==='about')render()});
+function aboutView(){return`<div class="about"><img src="${LOGO}" alt="Kasaade.lk" style="width:70%;max-width:280px"><p style="margin:0">${t('aboutt')}</p>${standalone()?'':installCard()}<div class="co"><span class="muted" style="font-size:13px">${t('built')}</span><h3 style="font-size:26px;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent">${COMPANY.name}</h3><div class="acts"><a class="btn btn-primary" href="tel:${COMPANY.phone}">${ic('phone',20)} ${COMPANY.phone}</a><a class="btn btn-ghost" href="https://wa.me/${digits(COMPANY.phone)}" target="_blank" rel="noopener">${ic('chat',20)} WhatsApp</a><a class="btn btn-ghost" href="mailto:${COMPANY.email}">${ic('mail',20)} ${COMPANY.email}</a></div></div><p class="hint">${legalLinks()}</p><p class="hint">© 2026 ${COMPANY.name}</p></div>`}
 
 /* ---- vendor side ---- */
 function subCard(v){const s=subStatus(v);
@@ -371,6 +381,7 @@ async function movePhoto(i,j){const uid=AUTH.user.uid,l=PC[uid];if(!l||i===j||!l
  try{const [p]=l.splice(i,1);l.splice(j,0,p);await Promise.all(l.map((q,k)=>updateDoc(doc(db,'vendors',uid,'photos',q.id),{at:1e12+k})));await syncCover(uid)}
  catch(e){console.error(e);toast(t('e_generic'));delete PC[uid];ensurePhotos(uid)}busy(false);render()}
 const ACT={
+ install:async()=>{if(!deferredInstall)return;deferredInstall.prompt();try{await deferredInstall.userChoice}catch(e){}deferredInstall=null;render()},
  go:d=>go(d.to,{id:d.id,cat:d.cat,dist:d.dist}),
  tab:d=>go(d.to),back:()=>back(),
  lang:d=>{LANG=d.l;try{localStorage.setItem('kasaade:lang',LANG)}catch(e){}render()},
@@ -413,3 +424,4 @@ document.addEventListener('submit',async e=>{e.preventDefault();const f=e.target
 /* ======================= START ======================= */
 render();
 setTimeout(()=>{splashDone=true;if(AUTH.ready)afterAuth();else{route={n:'boot'};render()}},3100);
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));

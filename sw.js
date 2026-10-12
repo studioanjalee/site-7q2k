@@ -1,7 +1,7 @@
 /* Kasaade.lk service worker – keeps the app shell available and always tries the network first,
    so new versions you upload appear right away. */
 const CACHE = 'kasaade-v1';
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'firebase-config.js', 'logo.webp', 'rings.webp', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'firebase-config.js', 'logo.webp', 'rings.webp', 'manifest.webmanifest', 'privacy.html', 'terms.html', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));

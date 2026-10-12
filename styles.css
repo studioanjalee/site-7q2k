@@ -218,3 +218,5 @@ summary{cursor:pointer;font-weight:600;color:var(--muted)}
 .lb-x{top:calc(12px + env(safe-area-inset-top,0px));right:12px}
 .lb-n{top:50%;transform:translateY(-50%)}.lb-n.prev{left:10px}.lb-n.next{right:10px}
 .lb-c{position:absolute;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);color:#fff;font-size:14px}
+
+.legal a{color:var(--rose-d);text-decoration:underline;text-underline-offset:3px}
