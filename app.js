@@ -12,7 +12,7 @@ document.documentElement.style.setProperty('--rings',"url('"+RINGS+"')");
 const PLANS=[{id:'m1',months:1,price:1000},{id:'m6',months:6,price:5000},{id:'m12',months:12,price:10000}];
 const AD_PRICES={main:25000,cat:10000};            // per month, Rs. – PLACEHOLDER, to be revised
 const TRIAL_MONTHS=2;
-const COMPANY={name:'Anjalee Tech Solutions',email:'studioanjalee@gmail.com',phone:'+94758829317'};
+const COMPANY={name:'Anjalee Tech Solutions',email:'info@kasaade.lk',phone:'+94758829317',addr:['Thambagalla Wattha','Panirendawa','61234']};
 /* PayHere: when your merchant account is ready, set enabled:true and implement startPayHere()
    (the hash must be created on a server with your Merchant Secret – never in this file). */
 const PAYHERE={enabled:false,merchantId:'YOUR_MERCHANT_ID',sandbox:true};
@@ -264,7 +264,7 @@ const legalLinks=()=>`<a href="privacy.html" ${LK}>${t('privacy')}</a> · <a hre
 const installCard=()=>`<div class="co"><h3>${t('inst_t')}</h3><p class="hint" style="margin:6px 0 0">${t('inst_d')}</p>${deferredInstall?`<div class="acts"><button class="btn btn-primary" data-act="install">${ic('home',20)} ${t('inst_b')}</button></div>`:''}</div>`;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;if(route.n==='about')render()});
 window.addEventListener('appinstalled',()=>{deferredInstall=null;if(route.n==='about')render()});
-function aboutView(){return`<div class="about"><img src="${LOGO}" alt="Kasaade.lk" style="width:70%;max-width:280px"><p style="margin:0">${t('aboutt')}</p>${standalone()?'':installCard()}<div class="co"><span class="muted" style="font-size:13px">${t('built')}</span><h3 style="font-size:26px;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent">${COMPANY.name}</h3><div class="acts"><a class="btn btn-primary" href="tel:${COMPANY.phone}">${ic('phone',20)} ${COMPANY.phone}</a><a class="btn btn-ghost" href="https://wa.me/${digits(COMPANY.phone)}" target="_blank" rel="noopener">${ic('chat',20)} WhatsApp</a><a class="btn btn-ghost" href="mailto:${COMPANY.email}">${ic('mail',20)} ${COMPANY.email}</a></div></div><p class="hint">${legalLinks()}</p><p class="hint">© 2026 ${COMPANY.name}</p></div>`}
+function aboutView(){return`<div class="about"><img src="${LOGO}" alt="Kasaade.lk" style="width:70%;max-width:280px"><p style="margin:0">${t('aboutt')}</p>${standalone()?'':installCard()}<div class="co"><span class="muted" style="font-size:13px">${t('built')}</span><h3 style="font-size:26px;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent">${COMPANY.name}</h3><p class="hint" style="margin:6px 0 0;line-height:1.5">${COMPANY.addr.join(", ")}</p><div class="acts"><a class="btn btn-primary" href="tel:${COMPANY.phone}">${ic('phone',20)} ${COMPANY.phone}</a><a class="btn btn-ghost" href="https://wa.me/${digits(COMPANY.phone)}" target="_blank" rel="noopener">${ic('chat',20)} WhatsApp</a><a class="btn btn-ghost" href="mailto:${COMPANY.email}">${ic('mail',20)} ${COMPANY.email}</a></div></div><p class="hint">${legalLinks()}</p><p class="hint">© 2026 ${COMPANY.name}</p></div>`}
 
 /* ---- vendor side ---- */
 function subCard(v){const s=subStatus(v);
