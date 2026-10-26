@@ -10,7 +10,7 @@ document.documentElement.style.setProperty('--rings',"url('"+RINGS+"')");
 
 /* ======================= CONFIG (owner edits here) ======================= */
 const PLANS=[{id:'m1',months:1,price:1000},{id:'m6',months:6,price:5000},{id:'m12',months:12,price:10000}];
-const AD_PRICES={main:25000,cat:10000};            // per month, Rs. – PLACEHOLDER, to be revised
+const AD_PRICES={main:5000,cat:2500};            // per month, Rs.
 const TRIAL_MONTHS=2;
 const COMPANY={name:'Anjalee Tech Solutions',email:'info@kasaade.lk',phone:'+94758829317',addr:['Thambagalla Wattha','Panirendawa','61234']};
 /* PayHere: when your merchant account is ready, set enabled:true and implement startPayHere()
